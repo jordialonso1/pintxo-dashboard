@@ -1,0 +1,263 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.6">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="es"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Pintxo Design System - Rama Dashboard&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>body { font-family: 'Inter', sans-serif; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body class="bg-slate-900 text-slate-100 min-h-screen"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="login-screen" class="flex items-center justify-center min-h-screen p-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="bg-slate-800 p-8 rounded-2xl shadow-xl max-w-md w-full border border-slate-700"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1 class="text-2xl font-bold mb-2 text-center text-orange-500"&gt;Pintxo DS Dashboard&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="text-slate-400 text-sm mb-6 text-center"&gt;Introduce tus credenciales de Figma. Se guardarán de forma local y segura en tu navegador.&lt;/p&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="space-y-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2"&gt;Figma Personal Access Token&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;input type="password" id="figma-token" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-orange-500 transition" placeholder="figd_..."&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2"&gt;Project ID&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;input type="text" id="project-id" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-orange-500 transition" placeholder="Ej: 326749193"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button onclick="saveConfig()" class="w-full bg-orange-600 hover:bg-orange-500 text-white font-medium py-2.5 rounded-lg transition mt-2 shadow-lg shadow-orange-900/20"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>Conectar con Figma</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="dashboard-screen" class="hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;header class="bg-slate-800 border-b border-slate-700 sticky top-0 z-50"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="flex items-center space-x-3"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span class="text-xl font-bold tracking-tight text-white"&gt;Pintxo &lt;span class="text-orange-500"&gt;Design System&lt;/span&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span class="bg-slate-900 text-xs text-slate-400 px-2.5 py-1 rounded-full border border-slate-700 font-mono" id="project-title-tag"&gt;Cargando...&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button onclick="disconnect()" class="text-sm text-slate-400 hover:text-white transition"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>Cerrar Sesión</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/header&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="bg-slate-800 p-6 rounded-xl border border-slate-700"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-sm font-medium text-slate-400 uppercase tracking-wider"&gt;Archivos en Proyecto&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-3xl font-bold mt-2" id="kpi-files"&gt;0&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="bg-slate-800 p-6 rounded-xl border border-slate-700"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-sm font-medium text-slate-400 uppercase tracking-wider"&gt;Ramas Abiertas&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-3xl font-bold mt-2 text-orange-500" id="kpi-branches"&gt;0&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="bg-slate-800 p-6 rounded-xl border border-slate-700"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-sm font-medium text-slate-400 uppercase tracking-wider"&gt;Ramas Inactivas (+90 días)&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-3xl font-bold mt-2 text-rose-500" id="kpi-stale"&gt;0&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="bg-slate-800 p-4 rounded-xl border border-slate-700 mb-6 flex flex-col sm:flex-row gap-4 items-center justify-between"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="w-full sm:w-72"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;input type="text" id="search-input" oninput="renderDashboard()" placeholder="Buscar rama por nombre..." class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-sm text-white focus:outline-none focus:border-orange-500"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="w-full sm:w-64"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;select id="file-filter" onchange="renderDashboard()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-sm text-white focus:outline-none focus:border-orange-500"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;option value="all"&gt;Todos los archivos origen&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="bg-slate-800 rounded-xl border border-slate-700 overflow-hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="overflow-x-auto"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;table class="w-full text-left border-collapse"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;thead&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;tr class="bg-slate-900/50 border-b border-slate-700 text-xs font-semibold text-slate-400 uppercase tracking-wider"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;th class="px-6 py-4"&gt;Nombre de la Rama&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;th class="px-6 py-4"&gt;Archivo Origen&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;th class="px-6 py-4"&gt;Última Modificación&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;th class="px-6 py-4 text-right"&gt;Acción&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/table&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div id="branches-container" class="divide-y divide-slate-700"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/main&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let figmaData = null;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Comprobar si ya hay credenciales guardadas al cargar la página</p>
+<p class="p1"><span class="Apple-converted-space">        </span>window.onload = function() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const token = sessionStorage.getItem('figma_token');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const projectId = sessionStorage.getItem('figma_project_id');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (token &amp;&amp; projectId) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('login-screen').classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('dashboard-screen').classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>fetchFigmaData(token, projectId);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function saveConfig() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const token = document.getElementById('figma-token').value.trim();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const projectId = document.getElementById('project-id').value.trim();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (!token || !projectId) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>alert('Por favor, rellena ambos campos.');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>sessionStorage.setItem('figma_token', token);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>sessionStorage.setItem('figma_project_id', projectId);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('login-screen').classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('dashboard-screen').classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>fetchFigmaData(token, projectId);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function disconnect() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>sessionStorage.clear();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>window.location.reload();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Petición real en tiempo real a la API de Figma</p>
+<p class="p1"><span class="Apple-converted-space">        </span>async function fetchFigmaData(token, projectId) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const response = await fetch(`https://api.figma.com/v1/projects/${projectId}/files?branch_data=true`, {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>headers: { 'X-Figma-Token': token }</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (!response.ok) throw new Error('Error al conectar con Figma. Verifica el token o el ID del proyecto.');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>figmaData = await response.json();</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Rellenar el filtro de archivos dinámicamente</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const filterSelect = document.getElementById('file-filter');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('project-title-tag').innerText = figmaData.name || 'Proyecto';</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>figmaData.files.forEach(file =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const option = document.createElement('option');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>option.value = file.key;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>option.innerText = file.name;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>filterSelect.appendChild(option);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>renderDashboard();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} catch (error) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>alert(error.message);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>disconnect();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function renderDashboard() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (!figmaData) return;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const searchTerm = document.getElementById('search-input').value.toLowerCase();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const fileFilter = document.getElementById('file-filter').value;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const container = document.getElementById('branches-container');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>container.innerHTML = '';</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>let totalFiles = figmaData.files.length;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>let totalBranches = 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>let staleBranches = 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>let branchesToRender = [];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const ahora = new Date();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>figmaData.files.forEach(file =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Filtrar por archivo si corresponde</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (fileFilter !== 'all' &amp;&amp; file.key !== fileFilter) return;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (file.branches &amp;&amp; file.branches.length &gt; 0) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>file.branches.forEach(branch =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>totalBranches++;</p>
+<p class="p2"><span class="Apple-converted-space">                        </span></p>
+<p class="p1"><span class="Apple-converted-space">                        </span>// Calcular si es obsoleta (más de 90 días sin modificar)</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>const fechaMod = new Date(branch.last_modified);</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>const diasInactiva = (ahora - fechaMod) / (1000 * 60 * 60 * 24);</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>const isStale = diasInactiva &gt; 90;</p>
+<p class="p2"><span class="Apple-converted-space">                        </span></p>
+<p class="p1"><span class="Apple-converted-space">                        </span>if (isStale) staleBranches++;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                        </span>// Filtrar por buscador de texto</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>if (branch.name.toLowerCase().includes(searchTerm)) {</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>branchesToRender.push({</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>...branch,</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>originFileName: file.name,</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>isStale: isStale</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>});</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Actualizar KPIs en la interfaz</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('kpi-files').innerText = totalFiles;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('kpi-branches').innerText = totalBranches;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('kpi-stale').innerText = staleBranches;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (branchesToRender.length === 0) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>container.innerHTML = `&lt;div class="px-6 py-8 text-center text-slate-500 text-sm"&gt;No se encontraron ramas abiertas que coincidan.&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Renderizar la lista ordenando por fecha de modificación más reciente</p>
+<p class="p1"><span class="Apple-converted-space">            </span>branchesToRender.sort((a, b) =&gt; new Date(b.last_modified) - new Date(a.last_modified));</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>branchesToRender.forEach(branch =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const fecha = new Date(branch.last_modified).toLocaleDateString('es-ES', {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute:'2-digit'</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>const row = document.createElement('div');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>row.className = `flex flex-col sm:flex-row sm:items-center justify-between px-6 py-4 hover:bg-slate-700/30 transition ${branch.isStale ? 'bg-rose-950/10 border-l-2 border-rose-500' : ''}`;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>row.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="flex-1 min-w-0 pr-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="flex items-center space-x-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="text-sm font-semibold text-white truncate"&gt;${branch.name}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>${branch.isStale ? '&lt;span class="bg-rose-500/10 border border-rose-500/30 text-rose-400 text-[10px] px-2 py-0.5 rounded font-medium tracking-wide"&gt;OBSOLETA&lt;/span&gt;' : ''}</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="w-full sm:w-48 mt-1 sm:mt-0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="inline-block bg-slate-900 border border-slate-700 text-slate-400 text-xs px-2.5 py-1 rounded font-medium"&gt;${branch.originFileName}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="w-full sm:w-48 mt-1 sm:mt-0 text-xs text-slate-400"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>${fecha}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="mt-2 sm:mt-0 text-right"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;a href="https://www.figma.com/file/${branch.key}" target="_blank" class="inline-flex items-center text-xs font-medium bg-slate-700 hover:bg-orange-600 text-white px-3 py-1.5 rounded transition shadow-sm"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>Abrir Rama</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>container.appendChild(row);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
